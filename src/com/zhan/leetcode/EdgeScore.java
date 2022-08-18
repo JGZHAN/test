@@ -81,9 +81,12 @@ public class EdgeScore {
         int indexResult = 0;
         Long temp = 0L;
         for (Integer index : map.keySet()) {
-            if (map.get(index) > temp){
-                temp = map.get(index);
+            var aLong = map.get(index);
+            if (aLong > temp){
+                temp = aLong;
                 indexResult = index;
+            }else if(aLong.equals(temp)){
+                indexResult = Math.min(indexResult, index);
             }
         }
         return indexResult;
